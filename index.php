@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 <?php require("Class/user.php"); ?>
+<?php include('Class/Tcp.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,13 +87,21 @@
     } else { ?>
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active"><?php echo "Bonjour ".$_SESSION['identifiant']; ?></a>
+                <a class="nav-link active"><?php echo "Bonjour " . $_SESSION['identifiant']; ?></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="deconnexion.php">Déconnexion</a>
             </li>
         </ul>
+        <form action="" method="POST">
+            <input type="HIDDEN" name="ButtonOn" />
+            <input type="submit" class="btn btn-secondary" value="Allumer" />
+        </form>
+        <form action="" method="POST">
+            <input type="HIDDEN" name="ButtonOff" />
+            <input type="submit" class="btn btn-secondary" value="Eteindre" />
+        </form>
 
         <div class="range-slider">
             <input class="range-slider__range" type="range" value="100" min="0" max="500">
@@ -113,6 +122,22 @@
             <input class="range-slider__range" type="range" value="100" min="0" max="500">
             <span class="range-slider__value">0</span>
         </div>
+        <div>
+            <form action="" method="post">
+                <input type="HIDDEN" name="rougeColor" />
+                <input type="submit" class="btn btn-danger" value="Rouge" />
+            </form>
+            <form action="" method="post">
+                <input type="HIDDEN" name="blueColor" />
+                <input type="submit" class="btn btn-primary" value="Bleu" />
+            </form>
+            <form action="" method="post">
+                <input type="HIDDEN" name="greenColor" />
+                <input type="submit" class="btn btn-success" value="Vert" />
+            </form>
+        </div>
+
+
     <?php
     }
 
