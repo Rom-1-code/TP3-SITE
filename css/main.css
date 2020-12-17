@@ -199,6 +199,14 @@ iframe {
 
 /*------------------------------------------------------------------
 [  ]*/
+.color1{
+  margin-top: 3%;
+  font-size: xx-large;
+}
+.etat{
+  margin-top: 2%;
+  font-size: xx-large;
+}
 .login100-form {
   padding-bottom: 54%;
   width: 100%;

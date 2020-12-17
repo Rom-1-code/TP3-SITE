@@ -94,18 +94,19 @@
                 <a class="nav-link" href="deconnexion.php">Déconnexion</a>
             </li>
         </ul>
-        <form action="" method="POST">
-            <input type="HIDDEN" name="ButtonOn" />
-            <input type="submit" class="btn btn-secondary" value="Allumer" />
-        </form>
-        <form action="" method="POST">
-            <input type="HIDDEN" name="ButtonOff" />
-            <input type="submit" class="btn btn-secondary" value="Eteindre" />
-        </form>
-
+        <div class="etat">
+            <form action="" method="POST">
+                <input type="HIDDEN" name="ButtonOn" />
+                <input type="submit" class="btn btn-secondary col-6 col-md 4" value="Allumer" />
+            </form>
+            <form action="" method="POST">
+                <input type="HIDDEN" name="ButtonOff" />
+                <input type="submit" class="btn btn-secondary col-6 col-md 4" value="Eteindre" />
+            </form>
+        </div>
         <div class="range-slider">
             <input class="range-slider__range" type="range" value="100" min="0" max="500">
-            <span style="color: red;" class="range-slider__value">0</span>
+            <span style="color: red;" class="range-slider__value ">0</span>
         </div>
 
         <div class="range-slider">
@@ -123,18 +124,23 @@
             <span class="range-slider__value">0</span>
         </div>
         <div>
-            <form action="" method="post">
-                <input type="HIDDEN" name="rougeColor" />
-                <input type="submit" class="btn btn-danger" value="Rouge" />
-            </form>
-            <form action="" method="post">
-                <input type="HIDDEN" name="blueColor" />
-                <input type="submit" class="btn btn-primary" value="Bleu" />
-            </form>
-            <form action="" method="post">
-                <input type="HIDDEN" name="greenColor" />
-                <input type="submit" class="btn btn-success" value="Vert" />
-            </form>
+            <div class="color1">
+                <form action="" method="post">
+                    <input type="HIDDEN" name="rougeColor" />
+                    <input type="submit" class="btn btn-danger col-6 col-md 4" value="Rouge" />
+                </form>
+            
+                <form action="" method="post">
+                    <input type="HIDDEN" name="blueColor" />
+                    <input type="submit" class="btn btn-primary col-6 col-md 4" value="Bleu" />
+                </form>
+           
+                <form action="" method="post">
+                    <input type="HIDDEN" name="greenColor" />
+                    <input type="submit" class="btn btn-success col-6 col-md 4" value="Vert" />
+                </form>
+            </div>
+            
         </div>
 
 
