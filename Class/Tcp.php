@@ -14,9 +14,7 @@ if (isset($_POST['ButtonOn']))
     socket_send($socket, $buf, 4, 0);
     //envoie du message
     $response = socket_read($socket,4, PHP_BINARY_READ);
-    //lecture du message
-    echo $response;
-
+    //fermeture du socket
     socket_close($socket);  
 }
 if (isset($_POST['ButtonOff']))
@@ -30,9 +28,7 @@ if (isset($_POST['ButtonOff']))
     socket_send($socket, $buf, 4, 0);
     //envoie du message
     $response = socket_read($socket,4, PHP_BINARY_READ);
-    //lecture du message
-    echo $response;
-
+    //fermeture du socket
     socket_close($socket);  
 }
 
@@ -47,9 +43,7 @@ if (isset($_POST['rougeColor']))
     socket_send($socket, $buf, 4, 0);
     //envoie du message
     $response = socket_read($socket,4, PHP_BINARY_READ);
-    //lecture du message
-    echo $response;
-
+    //fermeture du socket
     socket_close($socket);  
 }
 
@@ -64,9 +58,7 @@ if (isset($_POST['blueColor']))
     socket_send($socket, $buf, 4, 0);
     //envoie du message
     $response = socket_read($socket,4, PHP_BINARY_READ);
-    //lecture du message
-    echo $response;
-
+    //fermeture du socket
     socket_close($socket);  
 }
 
@@ -81,9 +73,21 @@ if (isset($_POST['greenColor']))
     socket_send($socket, $buf, 4, 0);
     //envoie du message
     $response = socket_read($socket,4, PHP_BINARY_READ);
-    //lecture du message
-    echo $response;
+    //fermeture du socket
+    socket_close($socket);  
+}
+if (isset($_POST['whiteColor']))
+{
+    $buf = 'w;'; // message à envoyer au serveur
 
+    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+    // création du socket
+    socket_connect($socket, $address, $port);
+    // connexion au socket
+    socket_send($socket, $buf, 4, 0);
+    //envoie du message
+    $response = socket_read($socket,4, PHP_BINARY_READ);
+    //fermeture du socket
     socket_close($socket);  
 }
 ?>

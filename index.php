@@ -34,7 +34,7 @@
 
 <body>
     <?php
-    if (!isset($_SESSION['identifiant'])) {
+    if (!isset($_SESSION['identifiant'])) { //si la session n'est pas ouverte on affcihe le formulaire de connexion
     ?>
         <div class="limiter">
             <div class="container-login100" style="background-image: url('images/img-01.jpg');">
@@ -83,7 +83,7 @@
                 </div>
             </div>
         </div>
-    <?php
+    <?php // si la session est connecté on affiche la page du site
     } else { ?>
         <ul class="nav justify-content-center">
             <li class="nav-item">
@@ -105,75 +105,88 @@
             </form>
         </div>
         <div class="range-slider">
-            <input class="range-slider__range" type="range" value="100" min="0" max="500">
-            <span style="color: red;" class="range-slider__value ">0</span>
+            <input class="range-slider__range slider" id="myRange" type="range" value="0" min="0" max="255">
+            <span style="color: red;" id="demo" class="range-slider__value ">0</span>
         </div>
 
         <div class="range-slider">
-            <input class="range-slider__range" type="range" value="100" min="0" max="500" step="50">
-            <span style="color: green;" class="range-slider__value">0</span>
+            <input class="range-slider__range slider1" id="myRange1" type="range" value="0" min="0" max="255">
+            <span style="color: green;" id="demo1" class="range-slider__value">0</span>
         </div>
 
         <div class="range-slider">
-            <input class="range-slider__range" type="range" value="100" min="0" max="500">
-            <span style="color: #00FFFF" class="range-slider__value">0</span>
+            <input class="range-slider__range slider2" id="myRange2" type="range" value="0" min="0" max="255">
+            <span style="color: #00FFFF" id="demo2" class="range-slider__value">0</span>
         </div>
 
         <div class="range-slider">
-            <input class="range-slider__range" type="range" value="100" min="0" max="500">
-            <span class="range-slider__value">0</span>
+            <input class="range-slider__range slider3" id="myRange3" type="range" value="0" min="0" max="255">
+            <span class="range-slider__value" id="demo3">0</span>
         </div>
-        <div>
-            <div class="color1">
-                <form action="" method="post">
-                    <input type="HIDDEN" name="rougeColor" />
-                    <input type="submit" class="btn btn-danger col-6 col-md 4" value="Rouge" />
-                </form>
-            
-                <form action="" method="post">
-                    <input type="HIDDEN" name="blueColor" />
-                    <input type="submit" class="btn btn-primary col-6 col-md 4" value="Bleu" />
-                </form>
-           
-                <form action="" method="post">
-                    <input type="HIDDEN" name="greenColor" />
-                    <input type="submit" class="btn btn-success col-6 col-md 4" value="Vert" />
-                </form>
+       
+            <div>
+                <div class="color1">
+                    <form action="" method="post">
+                        <input type="HIDDEN" name="rougeColor" />
+                        <input type="submit" class="btn btn-danger col-6 col-md 4" value="Rouge" />
+                    </form>
+
+                    <form action="" method="post">
+                        <input type="HIDDEN" name="greenColor" />
+                        <input type="submit" class="btn btn-success col-6 col-md 4" value="Vert" />
+                    </form>
+
+                    <form action="" method="post">
+                        <input type="HIDDEN" name="blueColor" />
+                        <input type="submit" class="btn btn-primary col-6 col-md 4" value="Bleu" />
+                    </form>
+
+                    <form action="" method="post">
+                        <input type="HIDDEN" name="whiteColor" />
+                        <input type="submit" class="btn btn-light col-6 col-md 4" value="Blanc" />
+                    </form>
+                </div>
+
             </div>
-            
-        </div>
-
-
+        
     <?php
     }
-
     ?>
 
-    <!-- Optional JavaScript -->
-    <script>
-        var rangeSlider = function() {
-            var slider = $('.range-slider'),
-                range = $('.range-slider__range'),
-                value = $('.range-slider__value');
+    
+    <script> // Script pour afficher la variation des slider
 
-            slider.each(function() {
+        var slider = document.getElementById("myRange");
+        var slider1 = document.getElementById("myRange1");
+        var slider2 = document.getElementById("myRange2");
+        var slider3 = document.getElementById("myRange3");
+        var output = document.getElementById("demo");
+        var output1 = document.getElementById("demo1");
+        var output2= document.getElementById("demo2");
+        var output3 = document.getElementById("demo3");
 
-                value.each(function() {
-                    var value = $(this).prev().attr('value');
-                    $(this).html(value);
-                });
+        output.innerHTML = slider.value; // afficher la valeur
+        output1.innerHTML = slider1.value;
+        output2.innerHTML = slider2.value;
+        output3.innerHTML = slider3.value;
 
-                range.on('input', function() {
-                    $(this).next(value).html(this.value);
-                });
-            });
-        };
-
-        rangeSlider();
+        // mise a jour en temps réel de la valeur
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+        slider1.oninput = function() {
+            output1.innerHTML = this.value;
+        }
+        slider2.oninput = function() {
+            output2.innerHTML = this.value;
+        }
+        slider3.oninput = function() {
+            output3.innerHTML = this.value;
+        }
     </script>
 
 
-
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
