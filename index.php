@@ -33,8 +33,8 @@
 </head>
 
 <body>
-    <?php
-    if (!isset($_SESSION['identifiant'])) { //si la session n'est pas ouverte on affcihe le formulaire de connexion
+    <?php   //si la session n'est pas ouverte on affcihe le formulaire de connexion
+    if (!isset($_SESSION['identifiant'])) { 
     ?>
         <div class="limiter">
             <div class="container-login100" style="background-image: url('images/img-01.jpg');">
@@ -61,15 +61,18 @@
                                 <i class="fa fa-lock"></i>
                             </span>
                         </div>
-                        <?php
-                        if (isset($_POST['identifiant']) && isset($_POST['mdp'])) { // Tout les champs du formulaire
-                            $coUser = new user(); //Le mot de passe est correct, on crée l'objet user
-                            $base = $coUser->Connexionbdd(); // Méthode de connexion dans class user
-                            $coUser->ConnexionUser($_POST['identifiant'], $_POST['mdp'], $base); //  Méthode de autorisation dans class user  
+                        <?php // Tout les champs du formulaire
+                        if (isset($_POST['identifiant']) && isset($_POST['mdp'])) {
+                            //Le mot de passe est correct, on crée l'objet user
+                            $coUser = new user(); 
+                            // Méthode de connexion dans class user
+                            $base = $coUser->Connexionbdd(); 
+                            //  Méthode de autorisation dans class user 
+                            $coUser->ConnexionUser($_POST['identifiant'], $_POST['mdp'], $base);  
                         }
 
-                        ?>
-                        <div class="container-login100-form-btn p-t-10">
+                        ?>  <!-- Bouton de pour envoyer la requête de connexion -->
+                        <div class="container-login100-form-btn p-t-10"> 
                             <button class="login100-form-btn h1">
                                 Connexion
                             </button>
@@ -91,9 +94,10 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="deconnexion.php">Déconnexion</a>
+                <a class="nav-link" href="deconnexion.php">Déconnexion</a> <!-- Bouton de déconnexion -->
             </li>
         </ul>
+
         <div class="etat">
             <form action="" method="POST">
                 <input type="HIDDEN" name="ButtonOn" />
@@ -104,6 +108,7 @@
                 <input type="submit" class="btn btn-secondary col-6 col-md 4" value="Eteindre" />
             </form>
         </div>
+        <!-- Slider pour varié l -->
         <div class="range-slider">
             <input class="range-slider__range slider" id="myRange" type="range" value="0" min="0" max="255">
             <span style="color: red;" id="demo" class="range-slider__value ">0</span>
@@ -123,7 +128,7 @@
             <input class="range-slider__range slider3" id="myRange3" type="range" value="0" min="0" max="255">
             <span class="range-slider__value" id="demo3">0</span>
         </div>
-       
+       <!-- Bouton pour envoyer les message de couleur au serveur DMX -->
             <div>
                 <div class="color1">
                     <form action="" method="post">
@@ -164,8 +169,8 @@
         var output1 = document.getElementById("demo1");
         var output2= document.getElementById("demo2");
         var output3 = document.getElementById("demo3");
-
-        output.innerHTML = slider.value; // afficher la valeur
+        // afficher la valeur
+        output.innerHTML = slider.value; 
         output1.innerHTML = slider1.value;
         output2.innerHTML = slider2.value;
         output3.innerHTML = slider3.value;
