@@ -47,7 +47,7 @@
                         </span>
 
                         <div class="wrap-input100 validate-input m-b-10" data-validate="Veuillez renseigner votre identifiant">
-                            <input class="input100" type="text" name="identifiant" placeholder="Identifiant">
+                            <input class="input100" type="text" name="identifiant" placeholder="Identifiant" value="Marco">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-user"></i>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="wrap-input100 validate-input m-b-10" data-validate="Veuillez renseigner votre mot de passe">
-                            <input class="input100" type="password" name="mdp" placeholder="Mot de passe">
+                            <input class="input100" type="password" name="mdp" placeholder="Mot de passe" value="0000">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-lock"></i>
@@ -156,9 +156,38 @@
         
     <?php
     }
+    
+
+    $ObjetTCP1= new TCP();
+    
+    // connexion au port
+    
+    if (isset($_POST['ButtonOn']))
+    {
+        $ObjetTCP1->SendColor('a;');
+    }
+    if (isset($_POST['ButtonOff']))
+    {
+        $ObjetTCP1->SendColor('e;');
+    }
+    if (isset($_POST['rougeColor']))
+    {
+        $ObjetTCP1->SendColor('r;');
+    }
+    if (isset($_POST['blueColor']))
+    {
+        $ObjetTCP1->SendColor('b;');
+    }
+    if (isset($_POST['greenColor']))
+    {
+        $ObjetTCP1->SendColor('v;');
+    }
+    if (isset($_POST['whiteColor']))
+    {
+        $ObjetTCP1->SendColor('w;');
+    }
     ?>
 
-    
     <script> // Script pour afficher la variation des slider
 
         var slider = document.getElementById("myRange");
@@ -178,16 +207,30 @@
         // mise a jour en temps réel de la valeur
         slider.oninput = function() {
             output.innerHTML = this.value;
+            sendColor();
         }
         slider1.oninput = function() {
             output1.innerHTML = this.value;
+            sendColor();
         }
         slider2.oninput = function() {
             output2.innerHTML = this.value;
+            sendColor();
         }
         slider3.oninput = function() {
             output3.innerHTML = this.value;
+            sendColor();
         }
+
+        function sendColor(){
+
+            fetch("traitementphp.php?val="+slider.value+";"+slider1.value+";"+slider2.value+";"+slider3.value+";")
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+
+        }
+
     </script>
 
 

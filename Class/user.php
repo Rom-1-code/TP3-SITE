@@ -17,6 +17,10 @@ class user
     {
         return $this->_identifiant;
     }
+    public function getMdp() 
+    {
+        return $this->_mdp;
+    }
     // Constructeur
     public function construct($id_user, $identifiant, $mdp) 
     {
@@ -56,5 +60,15 @@ class user
         }
     
 }
+    public function InscriptionUser(){
+
+
+
+
+
+
+        
+    }
+
 }
 ?>

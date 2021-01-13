@@ -1,100 +1,30 @@
 <?php
 //Romain FLEMAL
+class Tcp{
 
-$address = '192.168.64.227'; 
-// connexion au port
-$port =  1234; 
-if (isset($_POST['ButtonOn']))
-{
-    // message à envoyer au serveur
-    $buf = 'a;'; 
-    // création du socket
-    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    // connexion au socket
-    socket_connect($socket, $address, $port);
-    //envoie du message
-    socket_send($socket, $buf, 4, 0);
+    private $address = '192.168.64.227'; 
+    private $port = 1234;
+    private $socket;
     
-    $response = socket_read($socket,4, PHP_BINARY_READ);
-    //fermeture du socket
-    socket_close($socket);  
-}
-if (isset($_POST['ButtonOff']))
-{
-    // message à envoyer au serveur
-    $buf = 'e;'; 
-    // création du socket
-    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    // connexion au socket
-    socket_connect($socket, $address, $port);
-    //envoie du message
-    socket_send($socket, $buf, 4, 0);
-    
-    $response = socket_read($socket,4, PHP_BINARY_READ);
-    //fermeture du socket
-    socket_close($socket);  
-}
 
-if (isset($_POST['rougeColor']))
-{
-    // message à envoyer au serveur
-    $buf = 'r;'; 
-    // création du socket
-    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    // connexion au socket
-    socket_connect($socket, $address, $port);
-    //envoie du message
-    socket_send($socket, $buf, 4, 0);
-    
-    $response = socket_read($socket,4, PHP_BINARY_READ);
-    //fermeture du socket
-    socket_close($socket);  
-}
+    public function __construct(){
+        // création du socket
+        $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+    }
 
-if (isset($_POST['blueColor']))
-{
-    // message à envoyer au serveur
-    $buf = 'b;'; 
-    // création du socket
-    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    // connexion au socket
-    socket_connect($socket, $address, $port);
-    //envoie du message
-    socket_send($socket, $buf, 4, 0);
-    
-    $response = socket_read($socket,4, PHP_BINARY_READ);
-    //fermeture du socket
-    socket_close($socket);  
-}
+    public function SendColor($buf){
 
-if (isset($_POST['greenColor']))
-{
-    // message à envoyer au serveur
-    $buf = 'v;'; 
-    // création du socket
-    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    // connexion au socket
-    socket_connect($socket, $address, $port);
-    //envoie du message
-    socket_send($socket, $buf, 4, 0);
-    
-    $response = socket_read($socket,4, PHP_BINARY_READ);
-    //fermeture du socket
-    socket_close($socket);  
-}
-if (isset($_POST['whiteColor']))
-{
-    // message à envoyer au serveur
-    $buf = 'w;'; 
-    // création du socket
-    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    // connexion au socket
-    socket_connect($socket, $address, $port);
-    //envoie du message
-    socket_send($socket, $buf, 4, 0);
-    
-    $response = socket_read($socket,4, PHP_BINARY_READ);
-    //fermeture du socket
-    socket_close($socket);  
+
+        // connexion au socket
+        socket_connect($this->socket, $this->address, $this->port);
+        //envoie du message
+        socket_send($this->socket, $buf, 20, 0);
+        $response = socket_read($this->socket,20, PHP_BINARY_READ);
+        //fermeture du socket
+        socket_close($this->socket);  
+
+    }
+
+
 }
 ?>
